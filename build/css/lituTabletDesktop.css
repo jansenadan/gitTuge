@@ -1,0 +1,67 @@
+/* Esta hoja de estilos es continuación de litu.css aquí se encuentran los estilos para pantallas con un ancho mayor a 640px */
+
+html {
+	font-size: 8px;
+}
+body {
+	/*font-size: 1rem;*/
+	overflow: hidden;
+}
+a {
+}
+nav {
+}
+nav .izq, nav .der, nav.vertical .pArr, nav.vertical .pAba {
+	background: #fff2d8;
+	border-width: 3px;
+	height: 4.737rem;
+	top: calc(50vh - 2.368rem);
+	width: 4.737rem;
+}
+nav .izq:hover, nav .der:hover, nav.vertical .pArr:hover, nav.vertical .pAba:hover {
+	/*background-color: rgba(76,84,252,0.25);*/
+	background-color: #d1ce96;
+}
+nav .izq {
+	left: 2rem;
+}
+nav .der {
+	right: 2rem;
+}
+nav.vertical .pArr {
+	top: 1vh;
+}
+nav.vertical .pAba {
+	top: calc(99vh - 4.737rem);
+}
+#mainWrapper, #amor {
+	
+}
+.page {
+	/*padding: 5vh 5%; 
+	width: 90%;*/
+}
+
+
+
+/**++++++++++++++++
++++  Pagina 1  +++ 
++++++++++++++++++**/
+h1 {
+	font-size: 4.2rem;
+}
+h1 span {
+	top: 19vh;
+	width: 100%;
+}
+.p1 header p,
+.p1 .invita {
+	font-size: 2.1rem;
+	width: 42.917%;
+}
+.invita a {
+    font-size: 4rem;
+    margin: 2.5em 0 0;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9jc3MvbGl0dVRhYmxldERlc2t0b3AuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLCtIQUErSDs7QUFFL0g7Q0FDQyxlQUFlO0NBQ2Y7QUFDRDtDQUNDLG9CQUFvQjtDQUNwQixpQkFBaUI7Q0FDakI7QUFDRDtDQUNDO0FBQ0Q7Q0FDQztBQUNEO0NBQ0Msb0JBQW9CO0NBQ3BCLGtCQUFrQjtDQUNsQixpQkFBaUI7Q0FDakIsMkJBQTJCO0NBQzNCLGdCQUFnQjtDQUNoQjtBQUNEO0NBQ0MsMkNBQTJDO0NBQzNDLDBCQUEwQjtDQUMxQjtBQUNEO0NBQ0MsV0FBVztDQUNYO0FBQ0Q7Q0FDQyxZQUFZO0NBQ1o7QUFDRDtDQUNDLFNBQVM7Q0FDVDtBQUNEO0NBQ0MsMkJBQTJCO0NBQzNCO0FBQ0Q7O0NBRUM7QUFDRDtDQUNDO2NBQ2E7Q0FDYjs7OztBQUlEOztvQkFFb0I7QUFDcEI7Q0FDQyxrQkFBa0I7Q0FDbEI7QUFDRDtDQUNDLFVBQVU7Q0FDVixZQUFZO0NBQ1o7QUFDRDs7Q0FFQyxrQkFBa0I7Q0FDbEIsZUFBZTtDQUNmO0FBQ0Q7SUFDSSxnQkFBZ0I7SUFDaEIsa0JBQWtCO0NBQ3JCIiwiZmlsZSI6ImxpdHVUYWJsZXREZXNrdG9wLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIEVzdGEgaG9qYSBkZSBlc3RpbG9zIGVzIGNvbnRpbnVhY2nDs24gZGUgbGl0dS5jc3MgYXF1w60gc2UgZW5jdWVudHJhbiBsb3MgZXN0aWxvcyBwYXJhIHBhbnRhbGxhcyBjb24gdW4gYW5jaG8gbWF5b3IgYSA2NDBweCAqL1xyXG5cclxuaHRtbCB7XHJcblx0Zm9udC1zaXplOiA4cHg7XHJcbn1cclxuYm9keSB7XHJcblx0Lypmb250LXNpemU6IDFyZW07Ki9cclxuXHRvdmVyZmxvdzogaGlkZGVuO1xyXG59XHJcbmEge1xyXG59XHJcbm5hdiB7XHJcbn1cclxubmF2IC5penEsIG5hdiAuZGVyLCBuYXYudmVydGljYWwgLnBBcnIsIG5hdi52ZXJ0aWNhbCAucEFiYSB7XHJcblx0YmFja2dyb3VuZDogI2ZmZjJkODtcclxuXHRib3JkZXItd2lkdGg6IDNweDtcclxuXHRoZWlnaHQ6IDQuNzM3cmVtO1xyXG5cdHRvcDogY2FsYyg1MHZoIC0gMi4zNjhyZW0pO1xyXG5cdHdpZHRoOiA0LjczN3JlbTtcclxufVxyXG5uYXYgLml6cTpob3ZlciwgbmF2IC5kZXI6aG92ZXIsIG5hdi52ZXJ0aWNhbCAucEFycjpob3ZlciwgbmF2LnZlcnRpY2FsIC5wQWJhOmhvdmVyIHtcclxuXHQvKmJhY2tncm91bmQtY29sb3I6IHJnYmEoNzYsODQsMjUyLDAuMjUpOyovXHJcblx0YmFja2dyb3VuZC1jb2xvcjogI2QxY2U5NjtcclxufVxyXG5uYXYgLml6cSB7XHJcblx0bGVmdDogMnJlbTtcclxufVxyXG5uYXYgLmRlciB7XHJcblx0cmlnaHQ6IDJyZW07XHJcbn1cclxubmF2LnZlcnRpY2FsIC5wQXJyIHtcclxuXHR0b3A6IDF2aDtcclxufVxyXG5uYXYudmVydGljYWwgLnBBYmEge1xyXG5cdHRvcDogY2FsYyg5OXZoIC0gNC43MzdyZW0pO1xyXG59XHJcbiNtYWluV3JhcHBlciwgI2Ftb3Ige1xyXG5cdFxyXG59XHJcbi5wYWdlIHtcclxuXHQvKnBhZGRpbmc6IDV2aCA1JTsgXHJcblx0d2lkdGg6IDkwJTsqL1xyXG59XHJcblxyXG5cclxuXHJcbi8qKisrKysrKysrKysrKysrKytcclxuKysrICBQYWdpbmEgMSAgKysrIFxyXG4rKysrKysrKysrKysrKysrKyoqL1xyXG5oMSB7XHJcblx0Zm9udC1zaXplOiA0LjJyZW07XHJcbn1cclxuaDEgc3BhbiB7XHJcblx0dG9wOiAxOXZoO1xyXG5cdHdpZHRoOiAxMDAlO1xyXG59XHJcbi5wMSBoZWFkZXIgcCxcclxuLnAxIC5pbnZpdGEge1xyXG5cdGZvbnQtc2l6ZTogMi4xcmVtO1xyXG5cdHdpZHRoOiA0Mi45MTclO1xyXG59XHJcbi5pbnZpdGEgYSB7XHJcbiAgICBmb250LXNpemU6IDRyZW07XHJcbiAgICBtYXJnaW46IDIuNWVtIDAgMDtcclxufVxyXG4iXX0= */
