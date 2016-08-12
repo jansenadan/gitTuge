@@ -25,7 +25,7 @@ var _lt = {
 	_r1parcial: [8,9,10],
 	_r1emo: [11,12,13,14,15,16,17],
 	_r1noEmo: [12,13,14,15,16,17],
-	_r2: [18,19,20,21,14,22,23,25,16,17],
+	_r2: [18,19,20,21,14,22,23,24,25,16,17],
 	_r3: [26,27,28,29,30,31,32,33,34,35,36,/*'36-1',*/37,38],
 	_ruta: 0,
 	_actual: 0,
@@ -120,7 +120,10 @@ function lituFront() {
 		_lt._reversa = 0;
 		desli(e);
 	});
-	//$('.p1 .der').on('click', desli);
+	$('.p1 .der').on('click', function(e){
+		_lt._reversa = 0;
+		desli(e);
+	});
 	displayFlechas();
 	human();
 	$('input').on('change', quitaAlerta);
@@ -128,7 +131,7 @@ function lituFront() {
 	$('.p10 .check input').on('change', excluyeCheck);
 	$('.p27 .check input').on('change', excluyeCheck);
 	$('.reset').on('click', resetEncuesta);
-	$('.backTopostales').on('click', goBackTopostales);
+	// $('.backTopostales').on('click', goBackTopostales);
 	// $('area').mouseover(function(e){muestra(this,e)});
 	// $('area').mouseout(function(){oculta()});
 	// $('area').mousemove(function(e){desfase(e)});

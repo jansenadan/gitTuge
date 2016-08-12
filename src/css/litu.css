@@ -2321,13 +2321,16 @@ input[type=range]:focus::-ms-fill-upper {
 .p25 .nube {
 	background: url(../img/elem/nube-morada.png) no-repeat center;
 	background-size: contain;
-	max-width: 320px;
+	/*max-width: 320px;*/
+	max-width: 420px;
 	margin: 0 auto;
-	padding: 3rem;
+	/*padding: 3rem;*/
+	padding: 7rem;
 	color: #fff2d8;
 }
 .p25 .nube {
-	padding: 3.2rem 4rem;
+	/*padding: 3.2rem 4rem;*/
+	padding: 8.75rem;
 }
 .p15 .nube a {
 	color: #fff2d8;
@@ -2385,6 +2388,7 @@ input[type=range]:focus::-ms-fill-upper {
 .tipoTip .sp1 {
 	background-color: #37e7db;
 	background-image: url(../img/fondos/manchas-azul.png);
+	position: relative;
 }
 .tipoTip p {
 	margin: 5vh auto;
@@ -2425,6 +2429,7 @@ input[type=range]:focus::-ms-fill-upper {
 /*tips*/
 .tipoTip .tip {
  background-image: url(../img/fondos/manchas-azul.png);
+ position: relative;
 }
 .tipoTip .tip h4 {
 	font-family: 'Caveat', cursive;
@@ -2437,7 +2442,7 @@ input[type=range]:focus::-ms-fill-upper {
 	color: #b80d80;
 	font-size: 5rem;
 }
-.tipoTip .tip a.tipDescarga:hover {
+.tipoTip .tip a.tipDescarga:hover, .tipoTip .tipDescarga a:hover {
 	color: #37e7db;
 	text-decoration: none;
 }
@@ -2457,6 +2462,7 @@ input[type=range]:focus::-ms-fill-upper {
 /*Fin de tips*/
 .tipoTip .finTip {
 	 background-image: url(../img/fondos/manchas-azul.png);
+	 position: relative;
 }
 .tipoTip .finTip .tipDescarga .litu-i {
 	display: block;
