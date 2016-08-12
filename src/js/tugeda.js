@@ -96,8 +96,8 @@ var _lt = {
 		},
 		32: {
 			1: '<h2>¡Congrats!</h2><p class="txt-l">El diálogo es tu principal herramienta para   la vida en comunidad. </p><p>Tienes un gran potencial de líder. Piensas en los demás para tomar decisiones, buscas el diálogo para resolver conflictos, ayudas a mantener las buenas relaciones entre tu gente tejiendo puentes de comunicación y generando nuevos acuerdos. </p><p>Además eres capaz de sobreponerte al incumplimiento y te pones en los zapatos del otro porque conoces la importancia de construir juntos. </p><p class="txt-l">¡Explota ese potencial y contagia a los demás con tu buena vibra! </p><img src="img/elem/flecha-p29.png" class="img-responsive center-block" alt="Flecha de cierre"/>',
-			2: '<h2>¡Watch Out!</h2><p class="txt-l">Full que invites al otro a dialogar o a generar nuevos acuerdos, pero no lo hagas buscando culparlo o avergonzarlo.</p><p>¡Date la oportunidad completa!</p><p>Crees en el diálogo pero dejas que los malos sentimientos se queden y opaquen tus buenas intenciones, haciendo que la relación no se repare del todo.  Cuando actúas desde el resentimiento la posibilidad de construir buenas relaciones con los demás se hace difícil.</p><p class="txt-l">Para crecer juntos, exprésate y escucha a los demás sin hacerlos sentir mal.</p><img src="img/elem/flecha-p29.png" class="img-responsive center-block" alt="Flecha de cierre"/>',
-			3: '<h2>¡Lego Taak!</h2><p class="txt-l">Cuando evades no resuelves y haces más difícil reconstruir acuerdos y relaciones.</p><p> Además, hacer sentir culpable al otro o avergonzarlo tampoco es una forma de reparar la situación; al contrario, es agregar un daño extra. </p><p>¡Cuida tus vínculos con los demás!</p><p>Al no hablar ni generar acuerdos agrandas el conflicto hasta que se hace irreparable. Además, te muestras como alguien indiferente a la opinión, situación o sentimientos del otro. Aprende a oír y ponte en el lugar de otro porque seguramente también te has equivocado o has incumplido.</p><p class="txt-l">¡No imaginas los beneficios que llegan y lo bien que se siente!</p><img src="img/elem/flecha-p29.png" class="img-responsive center-block" alt="Flecha de cierre"/>'
+			2: '<h2>¡Lego Taak!</h2><p class="txt-l">Full que invites al otro a dialogar o a generar nuevos acuerdos, pero no lo hagas buscando culparlo o avergonzarlo.</p><p>¡Date la oportunidad completa!</p><p>Crees en el diálogo pero dejas que los malos sentimientos se queden y opaquen tus buenas intenciones, haciendo que la relación no se repare del todo.  Cuando actúas desde el resentimiento la posibilidad de construir buenas relaciones con los demás se hace difícil.</p><p class="txt-l">Para crecer juntos, exprésate y escucha a los demás sin hacerlos sentir mal.</p><img src="img/elem/flecha-p29.png" class="img-responsive center-block" alt="Flecha de cierre"/>',
+			3: '<h2>¡Watch Out!</h2><p class="txt-l">Cuando evades no resuelves y haces más difícil reconstruir acuerdos y relaciones.</p><p> Además, hacer sentir culpable al otro o avergonzarlo tampoco es una forma de reparar la situación; al contrario, es agregar un daño extra. </p><p>¡Cuida tus vínculos con los demás!</p><p>Al no hablar ni generar acuerdos agrandas el conflicto hasta que se hace irreparable. Además, te muestras como alguien indiferente a la opinión, situación o sentimientos del otro. Aprende a oír y ponte en el lugar de otro porque seguramente también te has equivocado o has incumplido.</p><p class="txt-l">¡No imaginas los beneficios que llegan y lo bien que se siente!</p><img src="img/elem/flecha-p29.png" class="img-responsive center-block" alt="Flecha de cierre"/>'
 		},
 		35: {
 			1: '<h2>¡Congrats!</h2><p class="txt-l">Confiar es la base de la convivencia y de tu tranquilidad. Es soltar, crecer junto a los demás, creer en ti y en los otros.</p><p>Has logrado superar las barreras de la incredulidad. Eso te permite afianzar relaciones libres, respetuosas y duraderas. Si no confiaras y la duda te asaltara a cada instante, vivirías entre la prevención y el miedo. Pero tú decidiste confiar. Expande esa maravillosa actitud</p><p class="txt-l">¡Porque la confianza genera más confianza!</p><img src="img/elem/flecha-p29.png" class="img-responsive center-block" alt="Flecha de cierre"/>',
@@ -113,8 +113,14 @@ function lituFront() {
 	$('.p1').css({'left': 0, 'display': 'block'});
 	_lt._actual = 1;
 	setRuta(_lt._rStart, 0);
-	$('#mainNav .izq').on('click', desli).siblings('.der').on('click', desli);
-	$('.p1 .der').on('click', desli);
+	$('#mainNav .izq').on('click', function(e){
+		_lt._reversa = 1;
+		desli(e);
+	}).siblings('.der').on('click', function(e){
+		_lt._reversa = 0;
+		desli(e);
+	});
+	//$('.p1 .der').on('click', desli);
 	displayFlechas();
 	human();
 	$('input').on('change', quitaAlerta);
@@ -238,79 +244,82 @@ function lee() {
 			loga('Pantalla 2; _lt._ruta: ',_lt._ruta);
 		break;
 		case 3:
-			if (_lt._reversa) {
+			_lt._camino = _lt._rStart;
+			if (!_lt._reversa) {
 				// Toca resetear el camino hasta lo que debería llevar acá.
 				// _lt._camino = _lt._rStart;
-				var ar = _lt._rStart;
-				loga('Reversa ar: ',ar);
-				setRuta(ar, 0);
+				/*var ar = _lt._rStart;
+				 loga('Reversa ar: ',ar);
+				 setRuta(ar, 0);*/
+				if (val === 'Resto del mundo') {
+					_lt._pais = val;
+					loga('_lt._ruta: ', _lt._ruta);
+					if (_lt._ruta === 3) {
+						var ar = _lt._camino.concat(_lt._r0_1_0).concat(_lt._r3);
+						loga('ar: ', ar);
+						setRuta(ar, 1);
+					} else if (_lt._ruta === 0) { // <-------- 20160731-12h: Hice cambios aquí
+						var ar = _lt._camino.concat(_lt._r0_1_0);
+						loga('ar: ', ar);
+						setRuta(ar, 0);
+					}
+					/*var ar = _lt._camino.concat(_lt._r0_1_0);
+					 loga('ar: ',ar);
+					 setRuta(ar, 0); */
+				} else if (val === 'Colombia') {
+					_lt._pais = val;
+					var ar = _lt._camino.concat(_lt._r0_1a);
+					loga('ar: ', ar);
+					setRuta(ar, 0);
+					// setRuta(_lt._r0_1, 0);
+				}
+				loga('Pantalla 3; _lt._pais: ', _lt._pais);
 			}
-
-			if (val === 'Resto del mundo') {
-				_lt._pais = val;
-				loga('_lt._ruta: ',_lt._ruta);
-				if (_lt._ruta === 3) {
-					var ar = _lt._camino.concat(_lt._r0_1_0).concat(_lt._r3);
+		break;
+		case 301:
+			// Toca resetear el camino hasta lo que debería llevar acá.
+			// _lt._camino = _lt._rStart.concat(_lt._r0_1a);
+			var ar = _lt._rStart.concat(_lt._r0_1a);
+			setRuta(ar, 0);
+			if (!_lt._reversa) {
+				_lt._depto = val;
+				if (val === 'San Andrés') {
+					var ar = _lt._camino.concat(_lt._r0_1_2);
 					loga('ar: ',ar);
-					setRuta(ar, 1); 
-				} else if (_lt._ruta === 0) { // <-------- 20160731-12h: Hice cambios aquí
+					setRuta(ar, 0);
+				} else if(val === 'Providencia') {
+					var ar = _lt._camino.concat(_lt._r0_1_1);
+					loga('ar: ',ar);
+					setRuta(ar, 0);
+				} else if (val != undefined) {
 					var ar = _lt._camino.concat(_lt._r0_1_0);
 					loga('ar: ',ar);
 					setRuta(ar, 0);
 				}
-				/*var ar = _lt._camino.concat(_lt._r0_1_0);
-				loga('ar: ',ar);
-				setRuta(ar, 0); */
-			} else if(val === 'Colombia') {
-				_lt._pais = val;
-				var ar = _lt._camino.concat(_lt._r0_1a);
-				loga('ar: ',ar);
-				setRuta(ar, 0);
-				// setRuta(_lt._r0_1, 0);
+				loga('Estoy en Col: ',_lt._depto);
 			}
-			loga('Pantalla 3; _lt._pais: ',_lt._pais);
-		break;
-		case 301:
-			if (_lt._reversa) {
-				// Toca resetear el camino hasta lo que debería llevar acá.
-				// _lt._camino = _lt._rStart.concat(_lt._r0_1a);
-				var ar = _lt._rStart.concat(_lt._r0_1a);
-				loga('Reversa ar: ',ar);
-				setRuta(ar, 0);
-			}
-
-			_lt._depto = val;
-			if (val === 'San Andrés') {
-				var ar = _lt._camino.concat(_lt._r0_1_2);
-				loga('ar: ',ar);
-				setRuta(ar, 0);
-			} else if(val === 'Providencia') {
-				var ar = _lt._camino.concat(_lt._r0_1_1);
-				loga('ar: ',ar);
-				setRuta(ar, 0);
-			} else if (val != undefined) {
-				var ar = _lt._camino.concat(_lt._r0_1_0);
-				loga('ar: ',ar);
-				setRuta(ar, 0);
-			}
-			loga('Estoy en Col: ',_lt._depto);
 		break;
 		case 311:
 		case 312:
-			if (_lt._ruta === 3) {
-				var ar = _lt._camino.concat(_lt._r3);
+			if (!_lt._reversa && val != undefined) {
+				if (_lt._ruta === 3) {
+					var ar = _lt._camino.concat(_lt._r3);
 					loga('ar: ',ar);
 					setRuta(ar, 1);
+				}
 			}
+
 		break;
 		case 4:
-			_lt._gen = val;
-			if (val === 'Mujer') {
-				$('.p5 .corpo').removeClass('hom').addClass('fem');
-				// $('.p5 .ui').append('Es una '+val);
-			} else if(val === 'Hombre') {
-				$('.p5 .corpo').removeClass('fem').addClass('hom');
-				// $('.p5 .ui').append('Es un '+val);
+			if(!_lt._reversa) {
+				_lt._gen = val;
+				if (val === 'Mujer') {
+					$('.p5 .corpo').removeClass('hom').addClass('fem');
+					// $('.p5 .ui').append('Es una '+val);
+				} else if (val === 'Hombre') {
+					$('.p5 .corpo').removeClass('fem').addClass('hom');
+					// $('.p5 .ui').append('Es un '+val);
+				}
 			}
 			/*if (_lt._camino[_lt._actual] = undefined) {
 				var ar = _lt._camino.concat(_lt._r0_1_0);
@@ -319,46 +328,46 @@ function lee() {
 			};*/
 		break;
 		case 6:
-			_lt._etni = val;
-			loga('_lt._ruta: ',_lt._ruta);
-			if (_lt._ruta === 3) {
-				if (_lt._camino[_lt._actual + 1] === undefined) {
-					var ar = _lt._camino.concat(_lt._r3);
+			if(!_lt._reversa){
+				_lt._etni = val;
+				loga('_lt._ruta: ',_lt._ruta);
+				if (_lt._ruta === 3) {
+					if (_lt._camino[_lt._actual + 1] === undefined) {
+						var ar = _lt._camino.concat(_lt._r3);
 						loga('ar: ',ar);
 						setRuta(ar, 1);
+					}
+				} else if (_lt._ruta < 3) {
+					var ar = _lt._camino.concat(_lt._rmixta);
+					loga('ar: ',ar);
+					setRuta(ar, 0);
 				}
-			} else if (_lt._ruta === 0) {
-				var ar = _lt._camino.concat(_lt._rmixta);
-				loga('ar: ',ar);
-				setRuta(ar, 0);
 			}
 		break;
 		case 7:
-			if (_lt._reversa) {
-				// Toca resetear el camino hasta lo que debería llevar acá.
-				var puntoCorte = _lt._camino.indexOf(7) + 1,
-					ar = _lt._camino.slice(0,puntoCorte);
-				loga('Reversa ar: ',ar);
-				setRuta(ar, 0);
+			// Toca resetear el camino hasta lo que debería llevar acá.
+			var puntoCorte = _lt._camino.indexOf(7) + 1,
+				ar = _lt._camino.slice(0,puntoCorte);
+			loga('Reversa ar: ',ar);
+			setRuta(ar, 0);
+			if (!_lt._reversa) {
+				var quees=typeof val,
+					nivel = " ";
+				loga('quees: ',quees);
+				if (quees == 'object') {
+					val.forEach(function(currentValue,index) {
+						nivel = parseInt(currentValue);
+						loga('Varios: '+nivel, typeof nivel);
+					});
+					eligeCamino7();
+				} else {
+					nivel = parseInt(val);
+					loga('uno: '+nivel, typeof nivel);
+					eligeCamino7();
+				}
+				_lt._situa = nivel;
 			}
 
-
-
-			var quees=typeof val,
-				nivel = " ";
-			loga('quees: ',quees);
-			if (quees == 'object') {
-				val.forEach(function(currentValue,index) {
-					nivel = parseInt(currentValue);
-					loga('Varios: '+nivel, typeof nivel);
-				});
-				eligeCamino7();
-			} else {
-				nivel = parseInt(val);
-				loga('uno: '+nivel, typeof nivel);
-				eligeCamino7();
-			}
-			_lt._situa = nivel;
 			function eligeCamino7() {
 				loga('eligeCamino: '+nivel, typeof nivel);
 				if (nivel < 1) {
@@ -378,41 +387,44 @@ function lee() {
 			}
 		break;
 		case 10:
-			if (_lt._reversa) {
-				// Toca resetear el camino hasta lo que debería llevar acá.
-				var puntoCorte = _lt._camino.indexOf(10) + 1,
-					ar = _lt._camino.slice(0,puntoCorte);
-				loga('Reversa ar: ',ar);
-				setRuta(ar, 0);
+			// Toca resetear el camino hasta lo que debería llevar acá.
+			var puntoCorte = _lt._camino.indexOf(10) + 1,
+				ar = _lt._camino.slice(0,puntoCorte);
+			loga('Reversa ar: ',ar);
+			setRuta(ar, 0);
+			if (!_lt._reversa) {
+				var quees=typeof val,
+					nivel = " ";
+
+				loga('quees: ',quees+', val:'+val);
+				if( quees != "undefined" ){
+					if (quees == 'object') {
+						val.forEach(function(currentValue,index) {
+							nivel = parseInt(currentValue);
+							loga('Varios: '+nivel, typeof nivel);
+						});
+						_lt._emo = nivel;
+						loga('aqui aplico valor a _lt._emo: '+_lt._emo, typeof _lt._emo);
+						eligeCamino10();
+					} else if (quees == 'string') {
+						if (val.length > 1) {
+							nivel = parseInt(0);
+						} else {
+							nivel = parseInt(val);
+
+						}
+						_lt._emo = nivel;
+						eligeCamino10();
+					} else {
+						nivel = parseInt(val);
+						loga('uno: '+nivel, typeof nivel);
+						_lt._emo = nivel;
+						loga('aqui aplico valor a _lt._emo: '+_lt._emo, typeof _lt._emo);
+						eligeCamino10();
+					}
+				}
 			}
 
-			var quees=typeof val,
-				nivel = " ";
-			loga('quees: ',quees+', val:'+val);
-			if (quees == 'object') {
-				val.forEach(function(currentValue,index) {
-					nivel = parseInt(currentValue);
-					loga('Varios: '+nivel, typeof nivel);
-				});
-				_lt._emo = nivel;
-				loga('aqui aplico valor a _lt._emo: '+_lt._emo, typeof _lt._emo);
-				eligeCamino10();
-			} else if (quees == 'string') {
-				if (val.length > 1) {
-					nivel = parseInt(0);
-				} else {
-					nivel = parseInt(val);
-					
-				}
-				_lt._emo = nivel;
-				eligeCamino10();
-			} else {
-				nivel = parseInt(val);
-				loga('uno: '+nivel, typeof nivel);
-				_lt._emo = nivel;
-				loga('aqui aplico valor a _lt._emo: '+_lt._emo, typeof _lt._emo);
-				eligeCamino10();
-			}
 			function eligeCamino10() {
 				// if (_lt._emo === 0) {};
 				if (_lt._situa < 2 && _lt._emo < 2) {
@@ -451,31 +463,46 @@ function lee() {
 			if (_lt._reversa) {}
 		break;*/
 		case 22:
-			var quees=typeof val,
-				nivel = ' ';
-			loga('quees: ',quees);
-			// nivel = parseInt(val);
-			// loga('uno: '+nivel, typeof nivel);
-			switch(val) {
-				case 'interviene':
-					nivel = parseInt(1);
-				break;
-				case 'llamaAutoridad':
-					nivel = parseInt(2);
-				break;
-				case 'nadaHace':
-					nivel = parseInt(3);
-				break;
+			if(!_lt._reversa){
+				var quees=typeof val,
+					nivel = ' ';
+				loga('quees: ',quees);
+				// nivel = parseInt(val);
+				// loga('uno: '+nivel, typeof nivel);
+				switch(val) {
+					case 'interviene':
+						nivel = parseInt(1);
+						break;
+					case 'llamaAutoridad':
+						nivel = parseInt(2);
+						break;
+					case 'nadaHace':
+						nivel = parseInt(3);
+						break;
+				}
+				_lt._accion = nivel;
+				loga('Pag22, respondió: ',val+', el nivel es: '+_lt._accion+' y es '+typeof _lt._accion);
+				aplicaNiveles(23, nivel, true, 'rect');
 			}
-			_lt._accion = nivel;
-			loga('Pag22, respondió: ',val+', el nivel es: '+_lt._accion+' y es '+typeof _lt._accion);
-			aplicaNiveles(23, nivel, true, 'rect');
+		break;
+		case 26:
+			loga("Estoy en la 26");
 		break;
 		case 27:
-			var quees=typeof val,
-				nivel = ' ';
-			loga('quees: ',quees);
-			if (quees == 'object') {
+			if(!_lt._reversa){
+				var quees=typeof val,
+					nivel = ' ';
+				loga('quees: ',quees);
+				if(quees == "object"){
+					nivel = 5;
+					eligeCamino27();
+				}else{
+					nivel = parseInt(val);
+					eligeCamino27();
+				}
+			}
+
+			/*if (quees == 'object') {
 				val.forEach(function(currentValue,index) {
 					nivel = parseInt(nivel) + parseInt(currentValue);
 					loga('Varios: '+nivel, typeof nivel);
@@ -485,13 +512,13 @@ function lee() {
 				nivel = parseInt(val);
 				loga('uno: '+nivel, typeof nivel);
 				eligeCamino27();
-			};
+			};*/
 
 			function eligeCamino27() {
 				loga('eligeCamino: '+nivel, typeof nivel);
 				if (nivel < 1) {
 					_lt._vecinos = parseInt(1);
-				} else if (nivel < 8) {
+				} else if (nivel < 4) {
 					_lt._vecinos = parseInt(2);
 				} else {
 					_lt._vecinos = parseInt(3);
@@ -528,6 +555,7 @@ function lee() {
 		break;
 	}
 	loga('Valor nuevo _lt._camino: ',_lt._camino+' ///******** FIN de La Función lee ********************//');
+	val = 0;
 	return(pasa);
 }
 
@@ -547,6 +575,7 @@ function aplicaNiveles(pagina, nivel, flagIny, contenedor) {
 		contenido = '';
 	loga('pag: ', pagina+', nivel: '+nivel);
 	loga('Elem: ', el);
+	el.removeClass("nivel1 nivel2 nivel3 nivel4 nivel5 nivel6 nivel7 nivel8 nivel9 nivel10 nivel11");
 	if (flagIny) {
 		contenido = txt[pagina][nivel];
 		loga('contenido página: ',contenido);
@@ -585,7 +614,7 @@ function desli(esto) {
 }
 function fw() {
 	var fw = _lt._actual + 1;
-	_lt._reversa = 0;
+	//_lt._reversa = 0;
 	if (fw > _lt._nSlides) {
 		fw = _lt._nSlides;
 	} else {
@@ -594,7 +623,7 @@ function fw() {
 }
 function rw() {
 	var rw = _lt._actual - 1;
-	_lt._reversa = 1;
+	//_lt._reversa = 1;
 	if (rw < 1) {
 		rw = 1;
 	} else {
@@ -618,7 +647,13 @@ function move(nuevoCont,vel) {
 	elEntra.css('display', 'block').animate({'left': 0}, speed, function() {
 		_lt._actual = nuevoCont;
 		displayFlechas();
-		$('#mainNav .izq').on('click', desli).siblings('.der').on('click', desli);
+		$('#mainNav .izq').on('click', function (e) {
+			_lt._reversa = 1;
+			desli(e);
+		}).siblings('.der').on('click', function (e) {
+			_lt._reversa = 0;
+			desli(e);
+		});
 		initVert();
 	})
 	loga('Función move --> nuevoCont: ',nuevoCont+', slide: '+ _lt._camino[nuevoCont] +', distancia: '+distancia+', tipo: '+ typeof _lt._camino[nuevoCont]+', _lt._nSlides: '+_lt._nSlides);
@@ -643,6 +678,12 @@ function displayFlechas() {
 			$('nav').removeClass('sidebar');
 		}
 	break;
+	}
+	if(_lt._camino[_lt._actual] == 26 || _lt._camino[_lt._actual] == 7 ){
+		if(_lt._repite){
+			$('.der').css('display', 'block');
+			$('.izq').css('display', 'none');
+		}
 	}
 }
 
@@ -776,11 +817,12 @@ function resetEncuesta() {
 	if (_lt._repite) {
 		location.reload();
 	} else {
+		_lt._repite = 1;
 		move(nuevoCont);
 		ar = tempIniAr.concat(rutaEmpalmeFinal);
 		// loga('Cambio el camino para que funciona como la rut 1 o 2, ar: ',ar);
-		setRuta(ar, 0);
-		_lt._repite = 1;
+		setRuta(ar, 1);
+
 		// setTimeout(function(){ alert("Hello"); }, 1000);
 	}
 }
